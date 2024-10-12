@@ -1,4 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+// next.config.js
+const isProd = process.env.NODE_ENV === 'production';
 
-export default nextConfig;
+module.exports = {
+  reactStrictMode: true,
+  output: 'export', // Konfigurasi untuk ekspor statis
+};

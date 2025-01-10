@@ -1,16 +1,22 @@
-"use client"; // Menandakan bahwa ini adalah komponen klien
+"use client"; 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Image from 'next/image';
 import g1 from '../../public/g1.jpeg';
 import g2 from '../../public/g2.jpeg';
 import g3 from '../../public/g3.jpeg';
-import Footer from '../components/footer'; // Pastikan path ini benar
+import Footer from '../components/footer'; 
 
 const EmergencyPage = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    import('bootstrap/dist/js/bootstrap.bundle.min.js');
+  }, []);
+
   return (
     <div className="about-container p-8">
       <h1 className="text-4xl font-bold mb-4">Emergency Aid. WAR 2022</h1>
@@ -50,74 +56,78 @@ const EmergencyPage = () => {
       </p>
 
       {/* Carousel */}
-      <div
-        id="carouselExampleCaptions"
-        className="carousel slide mb-6"
-        data-bs-ride="carousel"
-      >
-        <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <Image src={g1} className="d-block w-100" alt="First slide" />
-          </div>
-          <div className="carousel-item">
-            <Image src={g2} className="d-block w-100" alt="Second slide" />
-          </div>
-          <div className="carousel-item">
-            <Image src={g3} className="d-block w-100" alt="Third slide" />
-          </div>
-        </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev"
+      {isClient && (
+        <div
+          id="carouselExampleCaptions"
+          className="carousel slide mb-6"
+          data-bs-ride="carousel"
         >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
+          <div className="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              className="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <Image src={g1} className="d-block w-100" alt="First slide" />
+            </div>
+            <div className="carousel-item">
+              <Image src={g2} className="d-block w-100" alt="Second slide" />
+            </div>
+            <div className="carousel-item">
+              <Image src={g3} className="d-block w-100" alt="Third slide" />
+            </div>
+          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+      )}
 
       {/* Tombol Back to Homepage */}
       <div className="mt-6">
         <Link href="/" passHref>
-          <a className="px-4 py-2 text-black bg-white rounded">Back to Homepage</a>
+          <a className="px-4 py-2 text-black bg-white rounded">
+            Back to Homepage
+          </a>
         </Link>
       </div>
 

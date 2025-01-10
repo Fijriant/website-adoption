@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -7,14 +7,18 @@ import Image from 'next/image';
 import g1 from '../../public/g1.jpeg';
 import g2 from '../../public/g2.jpeg';
 import g3 from '../../public/g3.jpeg';
-import Footer from '../components/footer'; 
+import Footer from '../components/footer';
 
 const EmergencyPage = () => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-    import('bootstrap/dist/js/bootstrap.bundle.min.js');
+    import('bootstrap/dist/js/bootstrap.bundle.min.js')
+      .then(() => {
+        console.log('Bootstrap JS loaded');
+      })
+      .catch((error) => console.error('Failed to load Bootstrap JS:', error));
   }, []);
 
   return (
@@ -86,13 +90,28 @@ const EmergencyPage = () => {
           </div>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <Image src={g1} className="d-block w-100" alt="First slide" />
+              <Image
+                src={g1}
+                className="d-block w-100"
+                alt="First slide"
+                fill
+              />
             </div>
             <div className="carousel-item">
-              <Image src={g2} className="d-block w-100" alt="Second slide" />
+              <Image
+                src={g2}
+                className="d-block w-100"
+                alt="Second slide"
+                fill
+              />
             </div>
             <div className="carousel-item">
-              <Image src={g3} className="d-block w-100" alt="Third slide" />
+              <Image
+                src={g3}
+                className="d-block w-100"
+                alt="Third slide"
+                fill
+              />
             </div>
           </div>
           <button
@@ -125,9 +144,9 @@ const EmergencyPage = () => {
       {/* Tombol Back to Homepage */}
       <div className="mt-6">
         <Link href="/" passHref>
-          <a className="px-4 py-2 text-black bg-white rounded">
+          <span className="px-4 py-2 text-black bg-white rounded">
             Back to Homepage
-          </a>
+          </span>
         </Link>
       </div>
 
